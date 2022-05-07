@@ -4,7 +4,7 @@ import { useColorScheme } from 'react-native'
 import LogoDark from '~icons/LogoDark'
 import LogoLight from '~icons/LogoLight'
 
-export interface Props {
+interface Props {
   scale?: number
 }
 
