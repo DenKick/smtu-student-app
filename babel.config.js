@@ -15,6 +15,7 @@ module.exports = {
           '~hooks': './src/hooks',
           '~lib': './src/lib',
           '~icons': './src/icons',
+          '~constants': './src/constants',
         },
       },
     ],
