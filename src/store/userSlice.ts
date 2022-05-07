@@ -17,8 +17,8 @@ export const userSlice = createSlice({
     setIsAuthorized: (state, action: PayloadAction<boolean>) => {
       state.isAuthorized = action.payload
     },
-    setUser: state => {
-      state.user = 'Denis'
+    setUser: (state, action: PayloadAction<string>) => {
+      state.user = action.payload
     },
     restoreUserSliceState: state => {
       state.user = initialState.user
