@@ -6,9 +6,21 @@ declare module '@emotion/react' {
       background: {
         primary: string
       }
-      primary: string
-      positive: string
-      negative: string
+      input: {
+        text: string
+        background: string
+        placeholder: string
+      }
+      button: {
+        textColor: string
+        textDisabled: string
+        backgroundPrimary: string
+        backgroundDisabled: string
+      }
+    }
+    dimensions: {
+      borderRadius: string
+      commonHorizontalPadding: string
     }
   }
 }

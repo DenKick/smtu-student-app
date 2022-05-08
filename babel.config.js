@@ -13,7 +13,10 @@ module.exports = {
           '~screens': './src/screens',
           '~types': './src/types',
           '~hooks': './src/hooks',
-          '~lib': './src/lib'
+          '~lib': './src/lib',
+          '~icons': './src/icons',
+          '~constants': './src/constants',
+          '~helpers': './src/helpers'
         },
       },
     ],

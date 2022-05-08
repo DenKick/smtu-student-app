@@ -5,8 +5,20 @@ export const darkTheme: Theme = {
     background: {
       primary: '#000000',
     },
-    primary: '',
-    positive: '',
-    negative: '',
+    input: {
+      text: '#FFFFFF',
+      background: '#1C1C1E',
+      placeholder: '#EBEBF54B',
+    },
+    button: {
+      textColor: '#FFFFFF',
+      textDisabled: '#EBEBF54C',
+      backgroundPrimary: '#0A84FF',
+      backgroundDisabled: '#7474802E',
+    },
+  },
+  dimensions: {
+    borderRadius: '10px',
+    commonHorizontalPadding: '16px',
   },
 }
