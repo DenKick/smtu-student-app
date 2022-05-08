@@ -1,11 +1,12 @@
 import React from 'react'
 import { useColorScheme } from 'react-native'
 import { Provider } from 'react-redux'
+import 'react-native-gesture-handler'
 
 import { ThemeProvider } from '@emotion/react'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import AuthScreen from '~screens/AuthScreen'
+import Routes from '~routes/index'
 import { store, persistor } from '~store/index'
 import { darkTheme } from '~styles/darkTheme'
 import { lightTheme } from '~styles/lightTheme'
@@ -17,7 +18,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-          <AuthScreen />
+          <Routes />
         </ThemeProvider>
       </PersistGate>
     </Provider>
