@@ -56,19 +56,11 @@ const IOSMainNavigation = () => {
       <Tab.Screen
         name={RoutesNames.Timetable}
         component={AuthScreen}
-        options={{ ...getScreenOptions(RoutesNames.Timetable) }}
+        options={getScreenOptions(RoutesNames.Timetable)}
       />
-      <Tab.Screen
-        name={RoutesNames.Homework}
-        component={AuthScreen}
-        options={{ ...getScreenOptions(RoutesNames.Homework) }}
-      />
-      <Tab.Screen name={'THIRD'} component={AuthScreen} options={{ ...getScreenOptions(RoutesNames.Timetable) }} />
-      <Tab.Screen
-        name={RoutesNames.Account}
-        component={AuthScreen}
-        options={{ ...getScreenOptions(RoutesNames.Account) }}
-      />
+      <Tab.Screen name={RoutesNames.Homework} component={AuthScreen} options={getScreenOptions(RoutesNames.Homework)} />
+      <Tab.Screen name={'THIRD'} component={AuthScreen} options={getScreenOptions(RoutesNames.Timetable)} />
+      <Tab.Screen name={RoutesNames.Account} component={AuthScreen} options={getScreenOptions(RoutesNames.Account)} />
     </Tab.Navigator>
   )
 }

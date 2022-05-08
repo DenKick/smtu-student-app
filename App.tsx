@@ -1,6 +1,7 @@
 import React from 'react'
 import { useColorScheme } from 'react-native'
 import { Provider } from 'react-redux'
+import 'react-native-gesture-handler'
 
 import { ThemeProvider } from '@emotion/react'
 import { PersistGate } from 'redux-persist/integration/react'
