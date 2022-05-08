@@ -16,6 +16,7 @@ module.exports = {
           '~lib': './src/lib',
           '~icons': './src/icons',
           '~constants': './src/constants',
+          '~helpers': './src/helpers'
         },
       },
     ],
