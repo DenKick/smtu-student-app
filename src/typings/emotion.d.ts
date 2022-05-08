@@ -3,6 +3,10 @@ import '@emotion/react'
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
+      common: {
+        black: string
+        white: string
+      }
       background: {
         primary: string
       }
@@ -16,6 +20,10 @@ declare module '@emotion/react' {
         textDisabled: string
         backgroundPrimary: string
         backgroundDisabled: string
+      }
+      icons: {
+        inactive: string
+        active: string
       }
     }
     dimensions: {

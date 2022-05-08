@@ -2,6 +2,10 @@ import { Theme } from '@emotion/react'
 
 export const darkTheme: Theme = {
   colors: {
+    common: {
+      black: '#000000',
+      white: '#FFFFFF',
+    },
     background: {
       primary: '#000000',
     },
@@ -15,6 +19,10 @@ export const darkTheme: Theme = {
       textDisabled: '#EBEBF54C',
       backgroundPrimary: '#0A84FF',
       backgroundDisabled: '#7474802E',
+    },
+    icons: {
+      inactive: '#FFFFFF',
+      active: '#0A84FF',
     },
   },
   dimensions: {
