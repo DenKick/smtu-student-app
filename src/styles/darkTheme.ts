@@ -8,6 +8,7 @@ export const darkTheme: Theme = {
     },
     background: {
       primary: '#000000',
+      secondary: '#1D1D1DF0',
     },
     input: {
       text: '#FFFFFF',
@@ -23,6 +24,9 @@ export const darkTheme: Theme = {
     icons: {
       inactive: '#FFFFFF',
       active: '#0A84FF',
+    },
+    border: {
+      primary: '#2a2a2a',
     },
   },
   dimensions: {

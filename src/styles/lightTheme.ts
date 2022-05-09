@@ -8,6 +8,7 @@ export const lightTheme: Theme = {
     },
     background: {
       primary: '#FFFFFF',
+      secondary: '#F9F9F9F0',
     },
     input: {
       text: '#000000',
@@ -23,6 +24,9 @@ export const lightTheme: Theme = {
     icons: {
       inactive: '#000000',
       active: '#007AFF',
+    },
+    border: {
+      primary: '#b2b1b2',
     },
   },
   dimensions: {

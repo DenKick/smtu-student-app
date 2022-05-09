@@ -9,6 +9,7 @@ declare module '@emotion/react' {
       }
       background: {
         primary: string
+        secondary: string
       }
       input: {
         text: string
@@ -24,6 +25,9 @@ declare module '@emotion/react' {
       icons: {
         inactive: string
         active: string
+      }
+      border: {
+        primary: string
       }
     }
     dimensions: {
