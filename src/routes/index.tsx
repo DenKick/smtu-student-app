@@ -11,7 +11,7 @@ import IOSMainNavigation from '~routes/IOSMainNavigation'
 const Navigation = () => {
   const { isAuthorized } = useAppSelector(state => state.user)
 
-  const platformNavigation = Platform.OS === 'android' ? <AndroidMainNavigation /> : <IOSMainNavigation />
+  const platformNavigation = Platform.OS === 'ios' ? <IOSMainNavigation /> : <AndroidMainNavigation />
 
   return <NavigationContainer>{isAuthorized ? platformNavigation : <AuthStack />}</NavigationContainer>
 }
