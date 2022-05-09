@@ -18,6 +18,7 @@ module.exports = {
           '~constants': './src/constants',
           '~helpers': './src/helpers',
           '~routes': './src/routes',
+          '~config': './src/config',
         },
       },
     ],
