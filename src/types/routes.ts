@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
 export enum RoutesNames {
-  Auth = 'AUTH_SCREEN',
-  Timetable = 'TIMETABLE_SCREEN',
-  Homework = 'HOMEWORK_SCREEN',
   Account = 'ACCOUNT_SCREEN',
-  Other = 'OTHER_SCREEN', // This is temporary TODO: Replace for normal screen
+  Auth = 'AUTH_SCREEN',
+  Homework = 'HOMEWORK_SCREEN',
+  Performance = 'PERFORMANCE_SCREEN',
+  Timetable = 'TIMETABLE_SCREEN',
 }
 
 export interface Route {

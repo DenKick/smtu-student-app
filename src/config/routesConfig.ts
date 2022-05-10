@@ -1,4 +1,6 @@
+import AccountScreen from '~screens/AccountScreen'
 import HomeworkScreen from '~screens/HomeworkScreen'
+import PerformanceScreen from '~screens/PerformanceScreen'
 import TimetableScreen from '~screens/TimetableScreen'
 import { Route, RoutesNames } from '~types/routes'
 
@@ -12,11 +14,11 @@ export const routesConfig: Route[] = [
     screen: HomeworkScreen,
   },
   {
-    name: RoutesNames.Other,
-    screen: TimetableScreen,
+    name: RoutesNames.Performance,
+    screen: PerformanceScreen,
   },
   {
     name: RoutesNames.Account,
-    screen: TimetableScreen,
+    screen: AccountScreen,
   },
 ]
