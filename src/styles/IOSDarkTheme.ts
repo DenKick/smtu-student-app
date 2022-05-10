@@ -1,8 +1,9 @@
 import { Theme } from '@emotion/react'
 
-export const darkTheme: Theme = {
+export const IOSDarkTheme: Theme = {
   colors: {
     common: {
+      primary: '#0A84FF',
       black: '#000000',
       white: '#FFFFFF',
     },

@@ -1,14 +1,15 @@
 import { Theme } from '@emotion/react'
 
-export const lightTheme: Theme = {
+export const AndroidLightTheme: Theme = {
   colors: {
     common: {
+      primary: '#1976D2',
       black: '#000000',
       white: '#FFFFFF',
     },
     background: {
       primary: '#FFFFFF',
-      secondary: '#F9F9F9F0',
+      secondary: '#EEEEEE',
     },
     input: {
       text: '#000000',
@@ -18,12 +19,12 @@ export const lightTheme: Theme = {
     button: {
       textColor: '#FFFFFF',
       textDisabled: '#3C3C434C',
-      backgroundPrimary: '#007AFF',
+      backgroundPrimary: '#1976D2',
       backgroundDisabled: '#74748014',
     },
     icons: {
       inactive: '#000000',
-      active: '#007AFF',
+      active: '#1976D2',
     },
     border: {
       primary: '#b2b1b2',
