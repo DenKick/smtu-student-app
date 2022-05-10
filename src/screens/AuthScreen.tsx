@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Animated, Keyboard, Platform } from 'react-native'
+import { Animated, Keyboard } from 'react-native'
 import { useDispatch } from 'react-redux'
 
 import styled from '@emotion/native'
@@ -7,7 +7,12 @@ import styled from '@emotion/native'
 import Button from '~components/Button'
 import Input from '~components/Input'
 import Logo from '~components/Logo'
-import { keyboardShowEvent, keyboardHideEvent, animationTiming } from '~constants/platformSpecific'
+import {
+  keyboardShowEvent,
+  keyboardHideEvent,
+  animationTiming,
+  keyboardAvoidingViewBehavior,
+} from '~constants/platformSpecific'
 import isCorrectEmail from '~helpers/isCorrectEmail'
 import { setIsAuthorized, setUser } from '~store/userSlice'
 
@@ -66,8 +71,8 @@ const AuthScreen: React.FC = () => {
     })
 
     return () => {
-      Keyboard.removeAllListeners('keyboardDidShow')
-      Keyboard.removeAllListeners('keyboardDidHide')
+      Keyboard.removeAllListeners(keyboardShowEvent)
+      Keyboard.removeAllListeners(keyboardHideEvent)
     }
   }, [])
 
@@ -80,7 +85,7 @@ const AuthScreen: React.FC = () => {
   }, [email, password])
 
   return (
-    <Wrapper behavior={Platform.select({ ios: 'padding', android: 'height' })}>
+    <Wrapper behavior={keyboardAvoidingViewBehavior}>
       <SafeView>
         <Animated.View style={{ marginTop: marginAnim }}>
           <Logo scale={0.6} />
