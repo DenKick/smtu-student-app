@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { routesConfig } from '~config/routesConfig'
 import AccountIcon from '~icons/AccountIcon'
 import HomeworkIcon from '~icons/HomeworkIcon'
+import PerformanceIcon from '~icons/PerformanceIcon'
 import { RoutesNames } from '~types/routes'
 
 const Tab = createBottomTabNavigator()
@@ -16,6 +17,11 @@ const getScreenOptions = (screenName: RoutesNames) => {
       return {
         tabBarIcon: ({ focused }: { focused: boolean }) => <HomeworkIcon isActive={focused} />,
         tabBarLabel: 'Задания',
+      }
+    case RoutesNames.Performance:
+      return {
+        tabBarIcon: ({ focused }: { focused: boolean }) => <PerformanceIcon isActive={focused} />,
+        tabBarLabel: 'Успеваемость',
       }
     case RoutesNames.Account:
       return {
