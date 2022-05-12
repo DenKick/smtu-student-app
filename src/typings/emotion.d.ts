@@ -29,11 +29,18 @@ declare module '@emotion/react' {
       }
       border: {
         primary: string
+        secondary: string
       }
     }
     dimensions: {
       borderRadius: string
       commonHorizontalPadding: string
+      fontSize: {
+        sectionHeading: string
+        large: string
+        normal: string
+        small: string
+      }
     }
   }
 }

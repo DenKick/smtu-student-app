@@ -1,5 +1,7 @@
 import { Theme } from '@emotion/react'
 
+import { fontSizes } from '~styles/fontSizes'
+
 export const AndroidLightTheme: Theme = {
   colors: {
     common: {
@@ -9,7 +11,7 @@ export const AndroidLightTheme: Theme = {
     },
     background: {
       primary: '#FFFFFF',
-      secondary: '#EEEEEE',
+      secondary: '#FAFAFA',
     },
     input: {
       text: '#000000',
@@ -27,11 +29,13 @@ export const AndroidLightTheme: Theme = {
       active: '#1976D2',
     },
     border: {
-      primary: '#b2b1b2',
+      primary: '#B2B1B2',
+      secondary: '#9E9E9E',
     },
   },
   dimensions: {
     borderRadius: '10px',
     commonHorizontalPadding: '16px',
+    ...fontSizes,
   },
 }

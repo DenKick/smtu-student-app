@@ -1,5 +1,7 @@
 import { Theme } from '@emotion/react'
 
+import { fontSizes } from '~styles/fontSizes'
+
 export const AndroidDarkTheme: Theme = {
   colors: {
     common: {
@@ -27,11 +29,13 @@ export const AndroidDarkTheme: Theme = {
       active: '#1565C0',
     },
     border: {
-      primary: '#2a2a2a',
+      primary: '#2A2A2A',
+      secondary: '#616161',
     },
   },
   dimensions: {
     borderRadius: '10px',
     commonHorizontalPadding: '16px',
+    ...fontSizes,
   },
 }

@@ -1,5 +1,7 @@
 import { Theme } from '@emotion/react'
 
+import { fontSizes } from '~styles/fontSizes'
+
 export const IOSDarkTheme: Theme = {
   colors: {
     common: {
@@ -27,11 +29,13 @@ export const IOSDarkTheme: Theme = {
       active: '#0A84FF',
     },
     border: {
-      primary: '#2a2a2a',
+      primary: '#2A2A2A',
+      secondary: '#2A2A2A',
     },
   },
   dimensions: {
     borderRadius: '10px',
     commonHorizontalPadding: '16px',
+    ...fontSizes,
   },
 }
