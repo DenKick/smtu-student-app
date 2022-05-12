@@ -1,13 +1,17 @@
 import { Theme } from '@emotion/react'
 
-export const darkTheme: Theme = {
+import { fontSizes } from '~styles/fontSizes'
+
+export const IOSDarkTheme: Theme = {
   colors: {
     common: {
+      primary: '#0A84FF',
       black: '#000000',
       white: '#FFFFFF',
     },
     background: {
       primary: '#000000',
+      secondary: '#1D1D1DF0',
     },
     input: {
       text: '#FFFFFF',
@@ -24,9 +28,15 @@ export const darkTheme: Theme = {
       inactive: '#FFFFFF',
       active: '#0A84FF',
     },
+    border: {
+      primary: '#2A2A2A',
+      secondary: '#2A2A2A',
+    },
+    handleComponent: '#EBEBF54C',
   },
   dimensions: {
     borderRadius: '10px',
     commonHorizontalPadding: '16px',
+    ...fontSizes,
   },
 }

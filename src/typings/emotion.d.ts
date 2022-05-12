@@ -4,11 +4,13 @@ declare module '@emotion/react' {
   export interface Theme {
     colors: {
       common: {
+        primary: string
         black: string
         white: string
       }
       background: {
         primary: string
+        secondary: string
       }
       input: {
         text: string
@@ -25,10 +27,21 @@ declare module '@emotion/react' {
         inactive: string
         active: string
       }
+      border: {
+        primary: string
+        secondary: string
+      }
+      handleComponent: string
     }
     dimensions: {
       borderRadius: string
       commonHorizontalPadding: string
+      fontSize: {
+        sectionHeading: string
+        large: string
+        normal: string
+        small: string
+      }
     }
   }
 }

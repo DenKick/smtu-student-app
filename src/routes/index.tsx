@@ -1,19 +1,29 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { useColorScheme } from 'react-native'
 
-import { NavigationContainer } from '@react-navigation/native'
+import styled from '@emotion/native'
+import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 
 import useAppSelector from '~hooks/useAppSelector'
-import AndroidMainNavigation from '~routes/AndroidMainNavigation'
 import AuthStack from '~routes/AuthStack'
-import IOSMainNavigation from '~routes/IOSMainNavigation'
+import MainStack from '~routes/MainStack'
+
+const Wrapper = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.background.primary};
+`
 
 const Navigation = () => {
   const { isAuthorized } = useAppSelector(state => state.user)
+  const isDarkTheme = useColorScheme() === 'dark'
 
-  const platformNavigation = Platform.OS === 'android' ? <AndroidMainNavigation /> : <IOSMainNavigation />
-
-  return <NavigationContainer>{isAuthorized ? platformNavigation : <AuthStack />}</NavigationContainer>
+  return (
+    <Wrapper>
+      <NavigationContainer theme={isDarkTheme ? DarkTheme : undefined}>
+        {isAuthorized ? <MainStack /> : <AuthStack />}
+      </NavigationContainer>
+    </Wrapper>
+  )
 }
 
 export default Navigation

@@ -1,26 +1,25 @@
 import React from 'react'
 
-import { useTheme } from '@emotion/react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Theme, useTheme } from '@emotion/react'
+import { StackNavigationOptions, createStackNavigator } from '@react-navigation/stack'
 
 import AuthScreen from '~screens/AuthScreen'
 import { RoutesNames } from '~types/routes'
 
-const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
+
+const screenOptions = (theme: Theme): StackNavigationOptions => ({
+  headerShown: false,
+  cardStyle: {
+    backgroundColor: theme.colors.background.primary,
+  },
+})
 
 const AuthStack: React.FC = () => {
   const theme = useTheme()
 
   return (
-    <Stack.Navigator
-      initialRouteName={RoutesNames.Auth}
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: theme.colors.background.primary,
-        },
-      }}
-    >
+    <Stack.Navigator initialRouteName={RoutesNames.Auth} screenOptions={screenOptions(theme)}>
       <Stack.Screen name={RoutesNames.Auth} component={AuthScreen} />
     </Stack.Navigator>
   )
