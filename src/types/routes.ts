@@ -6,6 +6,14 @@ export enum RoutesNames {
   Homework = 'HOMEWORK_SCREEN',
   Performance = 'PERFORMANCE_SCREEN',
   Timetable = 'TIMETABLE_SCREEN',
+  Subject = 'SUBJECT_SCREEN',
+  PlatformNavigation = 'PLATFORM_NAVIGATION',
+}
+
+export interface TimetableStackRouteParams {
+  [RoutesNames.Timetable]: undefined
+  [RoutesNames.Subject]: { title: string; teacher: string | null }
+  [key: string]: object | undefined
 }
 
 export interface Route {

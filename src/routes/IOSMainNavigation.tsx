@@ -4,6 +4,7 @@ import { useTheme } from '@emotion/react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { routesConfig } from '~config/routesConfig'
+import { IOSTabBarHeight } from '~constants/platformSpecific'
 import AccountIcon from '~icons/AccountIcon'
 import HomeworkIcon from '~icons/HomeworkIcon'
 import PerformanceIcon from '~icons/PerformanceIcon'
@@ -47,7 +48,7 @@ const IOSMainNavigation = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.colors.background.secondary,
-          height: 90,
+          height: IOSTabBarHeight,
           borderTopWidth: 1,
           borderTopColor: theme.colors.border.primary,
         },
