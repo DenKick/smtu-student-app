@@ -10,7 +10,7 @@ export const IOSDarkTheme: Theme = {
       white: '#FFFFFF',
     },
     background: {
-      primary: '#000000',
+      primary: '#0F0F0F',
       secondary: '#1D1D1DF0',
     },
     input: {

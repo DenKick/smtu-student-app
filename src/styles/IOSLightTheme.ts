@@ -11,7 +11,7 @@ export const IOSLightTheme: Theme = {
     },
     background: {
       primary: '#FFFFFF',
-      secondary: '#F9F9F9',
+      secondary: '#EFEFEF',
     },
     input: {
       text: '#000000',
