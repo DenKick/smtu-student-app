@@ -15,3 +15,11 @@ export const keyboardAvoidingViewBehavior: KeyboardAvoidingViewProps['behavior']
   ios: 'padding',
   default: 'height',
 })
+
+export const IOSTabBarHeight = 90
+
+export const bottomOffset = (safeAreaInset?: number) =>
+  Platform.select({
+    ios: IOSTabBarHeight + (safeAreaInset || 0),
+    default: 0,
+  })
