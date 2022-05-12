@@ -19,6 +19,7 @@ module.exports = {
           '~helpers': './src/helpers',
           '~routes': './src/routes',
           '~config': './src/config',
+          '~api': './src/api',
         },
       },
     ],
