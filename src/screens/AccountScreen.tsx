@@ -1,9 +1,9 @@
 import React from 'react'
 
-import PageLayout from '~components/PageLayout'
+import ScreenLayout from '~components/ScreenLayout'
 
 const AccountScreen: React.FC = () => {
-  return <PageLayout heading={'Профиль'} />
+  return <ScreenLayout heading={'Профиль'} offset={0} />
 }
 
 export default AccountScreen

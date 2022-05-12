@@ -1,9 +1,9 @@
 import React from 'react'
 
-import PageLayout from '~components/PageLayout'
+import ScreenLayout from '~components/ScreenLayout'
 
 const HomeworkScreen: React.FC = () => {
-  return <PageLayout heading={'Задания'} />
+  return <ScreenLayout heading={'Задания'} offset={0} />
 }
 
 export default HomeworkScreen

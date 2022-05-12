@@ -1,9 +1,9 @@
 import React from 'react'
 
-import PageLayout from '~components/PageLayout'
+import ScreenLayout from '~components/ScreenLayout'
 
 const PerformanceScreen: React.FC = () => {
-  return <PageLayout heading={'Успеваемость'} />
+  return <ScreenLayout heading={'Успеваемость'} offset={0} />
 }
 
 export default PerformanceScreen
