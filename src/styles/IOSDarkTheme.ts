@@ -32,6 +32,7 @@ export const IOSDarkTheme: Theme = {
       primary: '#2A2A2A',
       secondary: '#2A2A2A',
     },
+    handleComponent: '#EBEBF54C',
   },
   dimensions: {
     borderRadius: '10px',

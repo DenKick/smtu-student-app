@@ -32,6 +32,7 @@ export const AndroidDarkTheme: Theme = {
       primary: '#2A2A2A',
       secondary: '#616161',
     },
+    handleComponent: '#FFFFFF',
   },
   dimensions: {
     borderRadius: '10px',

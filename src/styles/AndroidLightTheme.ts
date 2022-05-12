@@ -32,6 +32,7 @@ export const AndroidLightTheme: Theme = {
       primary: '#B2B1B2',
       secondary: '#9E9E9E',
     },
+    handleComponent: '#000000',
   },
   dimensions: {
     borderRadius: '10px',

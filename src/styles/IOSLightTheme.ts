@@ -32,6 +32,7 @@ export const IOSLightTheme: Theme = {
       primary: '#B2B1B2',
       secondary: '#B2B1B2',
     },
+    handleComponent: '#000000',
   },
   dimensions: {
     borderRadius: '10px',

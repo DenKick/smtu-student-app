@@ -31,6 +31,7 @@ declare module '@emotion/react' {
         primary: string
         secondary: string
       }
+      handleComponent: string
     }
     dimensions: {
       borderRadius: string
