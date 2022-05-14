@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -12,26 +12,28 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import ScreenLayout from '~components/ScreenLayout'
 import TimetableItem from '~components/TimetableItem'
 import TimetableSectionHeader from '~components/TimetableSectionHeader'
-import { mockedTimetableData, SubjectTimetable } from '~config/mockedTimetableData'
 import { bottomOffset } from '~constants/platformSpecific'
 import groupByDate from '~helpers/groupByDate'
+import useAppSelector from '~hooks/useAppSelector'
+import { useAppDispatch } from '~store/index'
+import { fetchTimetable } from '~store/timetableSlice'
+import { SubjectTimetable } from '~types/timetable'
 
 const TimetableScreen: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false)
   const [scrollOffset, setScrollOffset] = useState(0)
 
+  const { isLoadingTimetable, timetable } = useAppSelector(state => state.timetable)
+
+  const dispatch = useAppDispatch()
   const { bottom } = useSafeAreaInsets()
+
+  const handleUpdateTimetable = () => {
+    dispatch(fetchTimetable())
+  }
 
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offset = e.nativeEvent.contentOffset.y
     setScrollOffset(offset)
-  }
-
-  const handleRefresh = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
   }
 
   const renderItem = ({ item }: SectionListRenderItemInfo<SubjectTimetable>) => {
@@ -42,14 +44,20 @@ const TimetableScreen: React.FC = () => {
     return <TimetableSectionHeader title={title} />
   }
 
+  useEffect(() => {
+    if (!timetable.length) {
+      handleUpdateTimetable()
+    }
+  }, [])
+
   return (
     <ScreenLayout heading={'Расписание'} offset={scrollOffset}>
       <SectionList
-        refreshControl={<RefreshControl refreshing={isLoading} onRefresh={handleRefresh} />}
+        refreshControl={<RefreshControl refreshing={isLoadingTimetable} onRefresh={handleUpdateTimetable} />}
         contentContainerStyle={{ paddingBottom: bottomOffset(bottom) }}
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
-        sections={groupByDate(mockedTimetableData)}
+        sections={groupByDate(timetable)}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
         style={{ height: '100%' }}

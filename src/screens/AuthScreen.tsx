@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Keyboard } from 'react-native'
-import { useDispatch } from 'react-redux'
 
 import styled from '@emotion/native'
 
@@ -14,7 +13,9 @@ import {
   keyboardAvoidingViewBehavior,
 } from '~constants/platformSpecific'
 import isCorrectEmail from '~helpers/isCorrectEmail'
-import { setIsAuthorized, setUser } from '~store/userSlice'
+import useAppSelector from '~hooks/useAppSelector'
+import { useAppDispatch } from '~store/index'
+import { createUserLogin, setUser } from '~store/userSlice'
 
 const Wrapper = styled.KeyboardAvoidingView`
   flex: 1;
@@ -45,7 +46,8 @@ const AuthScreen: React.FC = () => {
   const [password, setPassword] = useState('')
   const [isLoginDisabled, setIsLoginDisabled] = useState(true)
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const { isLoadingUser } = useAppSelector(state => state.user)
 
   const marginAnim = useRef(new Animated.Value(70)).current
 
@@ -58,8 +60,8 @@ const AuthScreen: React.FC = () => {
   }
 
   const handleLoginPress = () => {
-    dispatch(setIsAuthorized(true))
     dispatch(setUser(email))
+    dispatch(createUserLogin())
   }
 
   useEffect(() => {
@@ -92,14 +94,20 @@ const AuthScreen: React.FC = () => {
         </Animated.View>
         <InputWrapper>
           <InputInnerWrapper>
-            <Input value={email} placeholder='Электронная почта' setValue={setEmail} keyboardType='email-address' />
+            <Input
+              value={email}
+              placeholder='Электронная почта'
+              setValue={setEmail}
+              isLoading={isLoadingUser}
+              keyboardType='email-address'
+            />
           </InputInnerWrapper>
           <InputInnerWrapper>
-            <Input value={password} placeholder='Пароль' setValue={setPassword} isPassword />
+            <Input value={password} placeholder='Пароль' setValue={setPassword} isLoading={isLoadingUser} isPassword />
           </InputInnerWrapper>
         </InputWrapper>
         <ButtonWrapper>
-          <Button onPress={handleLoginPress} isDisabled={isLoginDisabled} label='Войти' />
+          <Button onPress={handleLoginPress} isDisabled={isLoginDisabled} isLoading={isLoadingUser} label='Войти' />
         </ButtonWrapper>
       </SafeView>
     </Wrapper>
