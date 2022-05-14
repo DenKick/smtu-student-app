@@ -1,12 +1,14 @@
 import AsyncStorage from '@react-native-community/async-storage'
+import { Reducer } from '@reduxjs/toolkit'
 import { persistCombineReducers, persistReducer } from 'redux-persist'
 
-import userSlice from './userSlice'
+import timetableSlice from '~store/timetableSlice'
+import userSlice from '~store/userSlice'
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['user'],
+  whitelist: ['user', 'timetable'],
   blacklist: [],
 }
 
@@ -17,7 +19,16 @@ const userSliceConfig = {
   blacklist: [],
 }
 
-export const rootReducer = persistCombineReducers(persistConfig, {
+const timetableSliceConfig = {
+  key: 'timetable',
+  storage: AsyncStorage,
+  whitelist: ['timetable', 'updated'],
+  blacklist: ['isLoadingTimetable', 'isError'],
+}
+
+export const rootReducer: Reducer = persistCombineReducers(persistConfig, {
   user: persistReducer(userSliceConfig, userSlice),
+  timetable: persistReducer(timetableSliceConfig, timetableSlice),
 })
+
 export type RootState = ReturnType<typeof rootReducer>
