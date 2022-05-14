@@ -27,7 +27,7 @@ const HandleComponent = styled.View`
 
 const Title = styled.Text`
   color: ${({ theme }) => theme.colors.input.text};
-  font-size: 17px;
+  font-size: ${({ theme }) => theme.dimensions.fontSize.sectionHeading};
   line-height: 22px;
 `
 

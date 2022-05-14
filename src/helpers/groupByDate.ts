@@ -1,5 +1,5 @@
-import { SubjectTimetable } from '~config/mockedTimetableData'
 import getFormattedDateString from '~helpers/getFormattedDateString'
+import { SubjectTimetable } from '~types/timetable'
 
 const groupByDate = (array: SubjectTimetable[]) => {
   const dates = new Set(array.map(item => getFormattedDateString(item.timeStart)))

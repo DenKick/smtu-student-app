@@ -1,4 +1,5 @@
 import React from 'react'
+import { ActivityIndicator } from 'react-native'
 
 import styled from '@emotion/native'
 import { useTheme } from '@emotion/react'
@@ -21,11 +22,12 @@ interface Props {
   label: string
   onPress: () => void
   isDisabled?: boolean
+  isLoading?: boolean
   color?: string
   background?: string
 }
 
-const Button: React.FC<Props> = ({ label, isDisabled, color, background, onPress }) => {
+const Button: React.FC<Props> = ({ label, isDisabled, color, background, onPress, isLoading }) => {
   const theme = useTheme()
 
   const buttonBackgroundColor = background || theme.colors.button.backgroundPrimary
@@ -38,7 +40,11 @@ const Button: React.FC<Props> = ({ label, isDisabled, color, background, onPress
       activeOpacity={0.8}
       onPress={onPress}
     >
-      <Text color={isDisabled ? theme.colors.button.textDisabled : textColor}>{label}</Text>
+      {!isLoading ? (
+        <Text color={isDisabled ? theme.colors.button.textDisabled : textColor}>{label}</Text>
+      ) : (
+        <ActivityIndicator color={theme.colors.common.white} size={17} />
+      )}
     </ButtonContainer>
   )
 }
