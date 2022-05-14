@@ -4,10 +4,10 @@ import { Platform, TouchableOpacity } from 'react-native'
 import styled from '@emotion/native'
 import { useTheme } from '@emotion/react'
 
-import { SubjectTimetable } from '~config/mockedTimetableData'
 import getFormattedTimeString from '~helpers/getFormattedTimeString'
 import useAppNavigation from '~hooks/useAppNavigation'
 import { RoutesNames } from '~types/routes'
+import { SubjectTimetable } from '~types/timetable'
 
 const RowContainer = styled.View`
   background-color: ${({ theme }) =>
@@ -60,7 +60,7 @@ const TimetableItem: React.FC<Props> = ({ item }) => {
           {getFormattedTimeString(item.timeStart)} - {getFormattedTimeString(item.timeEnd)}
         </Text>
         <Text withoutPadding color={theme.colors.input.placeholder}>
-          {item.classroom}
+          Ауд. {item.classroom}
         </Text>
       </ColumnContainer>
       <Border />
