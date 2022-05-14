@@ -18,10 +18,11 @@ interface Props {
   setValue: Dispatch<SetStateAction<string>>
   isPassword?: boolean
   isLoading?: boolean
+  multiline?: boolean
   keyboardType?: KeyboardType
 }
 
-const Input: React.FC<Props> = ({ value, setValue, placeholder, isPassword, keyboardType, isLoading }) => {
+const Input: React.FC<Props> = ({ value, setValue, placeholder, isPassword, keyboardType, isLoading, multiline }) => {
   const theme = useTheme()
 
   const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -38,6 +39,7 @@ const Input: React.FC<Props> = ({ value, setValue, placeholder, isPassword, keyb
       onChange={handleChange}
       secureTextEntry={isPassword}
       editable={!isLoading}
+      multiline={multiline}
     />
   )
 }
