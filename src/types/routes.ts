@@ -8,11 +8,13 @@ export enum RoutesNames {
   Timetable = 'TIMETABLE_SCREEN',
   Subject = 'SUBJECT_SCREEN',
   PlatformNavigation = 'PLATFORM_NAVIGATION',
+  ProfileDetails = 'PROFILE_DETAILS',
 }
 
 export interface StackRouteParams {
   [RoutesNames.Timetable]: undefined
   [RoutesNames.Subject]: { title: string; teacher: string | null }
+  [RoutesNames.ProfileDetails]: undefined
   [key: string]: object | undefined
 }
 
