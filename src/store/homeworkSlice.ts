@@ -20,8 +20,11 @@ export const homeworkSlice = createSlice({
     removeHomework: (state, action: PayloadAction<Homework>) => {
       state.homeworks = state.homeworks.filter(item => item.id !== action.payload.id)
     },
+    restoreHomeworkSlice: state => {
+      state.homeworks = initialState.homeworks
+    },
   },
 })
 
-export const { addHomework, removeHomework } = homeworkSlice.actions
+export const { addHomework, removeHomework, restoreHomeworkSlice } = homeworkSlice.actions
 export default homeworkSlice.reducer
