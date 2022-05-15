@@ -6,6 +6,7 @@ export const IOSLightTheme: Theme = {
   colors: {
     common: {
       primary: '#007AFF',
+      warning: '#FF3A30',
       black: '#000000',
       white: '#FFFFFF',
     },

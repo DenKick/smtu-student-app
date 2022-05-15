@@ -6,6 +6,7 @@ export const IOSDarkTheme: Theme = {
   colors: {
     common: {
       primary: '#0A84FF',
+      warning: '#FF443A',
       black: '#000000',
       white: '#FFFFFF',
     },

@@ -6,6 +6,7 @@ export const AndroidDarkTheme: Theme = {
   colors: {
     common: {
       primary: '#1565C0',
+      warning: '#F44336',
       black: '#000000',
       white: '#FFFFFF',
     },
@@ -15,7 +16,7 @@ export const AndroidDarkTheme: Theme = {
     },
     input: {
       text: '#FFFFFF',
-      background: '#1C1C1E',
+      background: '#1D1D1D',
       placeholder: '#EBEBF54B',
     },
     button: {

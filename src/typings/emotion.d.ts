@@ -5,6 +5,7 @@ declare module '@emotion/react' {
     colors: {
       common: {
         primary: string
+        warning: string
         black: string
         white: string
       }

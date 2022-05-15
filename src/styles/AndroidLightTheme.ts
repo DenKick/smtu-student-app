@@ -6,6 +6,7 @@ export const AndroidLightTheme: Theme = {
   colors: {
     common: {
       primary: '#1976D2',
+      warning: '#F44336',
       black: '#000000',
       white: '#FFFFFF',
     },
