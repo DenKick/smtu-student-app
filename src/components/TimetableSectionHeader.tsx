@@ -4,7 +4,7 @@ import styled from '@emotion/native'
 
 const Header = styled.Text`
   font-size: ${({ theme }) => theme.dimensions.fontSize.sectionHeading};
-  padding: 40px ${({ theme }) => theme.dimensions.commonHorizontalPadding} 10px;
+  padding: 20px ${({ theme }) => theme.dimensions.commonHorizontalPadding} 10px;
   color: ${({ theme }) => theme.colors.input.text};
 `
 

@@ -1,43 +1,57 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, Platform } from 'react-native'
+import { FlatList, ListRenderItemInfo, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 
-import AddButton from '~components/AddButton'
 import AddHomeworkModal from '~components/AddHomeworkModal'
+import Button from '~components/Button'
+import HomeworkListItem from '~components/HomeworkListItem'
 import ScreenLayout from '~components/ScreenLayout'
 import ZeroState from '~components/ZeroState'
-import { RoutesNames, TimetableStackRouteParams } from '~types/routes'
+import { bottomOffset } from '~constants/platformSpecific'
+import useAppSelector from '~hooks/useAppSelector'
+import { selectHomeworksBySubject } from '~store/selectors'
+import { Homework } from '~types/homework'
+import { RoutesNames, StackRouteParams } from '~types/routes'
 
 const Wrapper = styled.View`
-  padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
+  padding: ${({ theme }) =>
+    Platform.select({
+      ios: theme.dimensions.commonHorizontalPadding,
+      default: `${theme.dimensions.commonHorizontalPadding} 0px`,
+    })};
 `
 
-const ButtonWrapper = styled.View<{ bottomOffset: number }>`
-  position: absolute;
-  right: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
-  bottom: ${({ bottomOffset }) => `${Platform.select({ ios: bottomOffset, default: 16 })}px`};
+const ButtonWrapper = styled.View`
+  padding: ${({ theme }) => Platform.select({ ios: '0px', default: theme.dimensions.commonHorizontalPadding })};
 `
 
 const Teacher = styled.Text`
   color: ${({ theme }) => theme.colors.input.text};
-  font-size: ${({ theme }) => theme.dimensions.fontSize.normal};
+  font-size: ${({ theme }) => theme.dimensions.fontSize.large};
+  padding: ${({ theme }) =>
+    Platform.select({
+      ios: `${theme.dimensions.commonHorizontalPadding} 0`,
+      default: theme.dimensions.commonHorizontalPadding,
+    })};
 `
 
-const SubjectScreen: React.FC<StackScreenProps<TimetableStackRouteParams, RoutesNames.Subject>> = ({
+const renderItem = ({ item }: ListRenderItemInfo<Homework>) => <HomeworkListItem item={item} />
+
+const SubjectScreen: React.FC<StackScreenProps<StackRouteParams, RoutesNames.Subject>> = ({
   route: {
     params: { title, teacher },
   },
 }) => {
   const navigation = useNavigation()
-  const { top, bottom } = useSafeAreaInsets()
+  const { top } = useSafeAreaInsets()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const items: string[] = []
+  const homeworks = useAppSelector(state => selectHomeworksBySubject(state, title))
 
   useEffect(() => {
     navigation.setOptions({
@@ -55,17 +69,21 @@ const SubjectScreen: React.FC<StackScreenProps<TimetableStackRouteParams, Routes
         <Wrapper>
           {!!teacher && <Teacher>Преподаватель: {teacher}</Teacher>}
           <FlatList
-            data={items}
-            renderItem={() => null}
-            bounces={items.length > 0}
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: bottomOffset(200) }}
+            data={homeworks}
+            renderItem={renderItem}
+            bounces={homeworks.length > 0}
+            showsVerticalScrollIndicator={false}
             ListEmptyComponent={<ZeroState title={'Нет активных заданий'} />}
+            ListFooterComponent={
+              <ButtonWrapper>
+                <Button label='Добавить задание' onPress={toggleModal} />
+              </ButtonWrapper>
+            }
           />
-          <AddHomeworkModal isVisible={isModalVisible} toggleVisible={toggleModal} />
+          <AddHomeworkModal subject={title} teacher={teacher} isVisible={isModalVisible} toggleVisible={toggleModal} />
         </Wrapper>
       </ScreenLayout>
-      <ButtonWrapper bottomOffset={bottom}>
-        <AddButton onPress={toggleModal} />
-      </ButtonWrapper>
     </>
   )
 }

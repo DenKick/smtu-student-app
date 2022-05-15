@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/native": "11.0.0",
     "@emotion/react": "11.9.0",
+    "@react-native-clipboard/clipboard": "^1.10.0",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/drawer": "^6.4.1",
@@ -20,6 +21,7 @@
     "@react-navigation/stack": "^6.2.1",
     "@reduxjs/toolkit": "1.8.1",
     "axios": "^0.27.2",
+    "nanoid": "^3.3.4",
     "react": "17.0.2",
     "react-native": "0.68.1",
     "react-native-date-picker": "^4.2.1",
@@ -38,6 +40,7 @@
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
+    "@types/nanoid": "^3.0.0",
     "@types/react-native": "^0.67.3",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
