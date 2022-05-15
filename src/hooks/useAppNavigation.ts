@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import { TimetableStackRouteParams } from '~types/routes'
+import { StackRouteParams } from '~types/routes'
 
-const useAppNavigation = () => useNavigation<StackNavigationProp<TimetableStackRouteParams>>()
+const useAppNavigation = () => useNavigation<StackNavigationProp<StackRouteParams>>()
 
 export default useAppNavigation

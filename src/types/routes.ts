@@ -10,7 +10,7 @@ export enum RoutesNames {
   PlatformNavigation = 'PLATFORM_NAVIGATION',
 }
 
-export interface TimetableStackRouteParams {
+export interface StackRouteParams {
   [RoutesNames.Timetable]: undefined
   [RoutesNames.Subject]: { title: string; teacher: string | null }
   [key: string]: object | undefined

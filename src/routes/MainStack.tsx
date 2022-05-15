@@ -7,9 +7,9 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 import AndroidMainNavigation from '~routes/AndroidMainNavigation'
 import IOSMainNavigation from '~routes/IOSMainNavigation'
 import SubjectScreen from '~screens/SubjectScreen'
-import { RoutesNames, TimetableStackRouteParams } from '~types/routes'
+import { RoutesNames, StackRouteParams } from '~types/routes'
 
-const Stack = createStackNavigator<TimetableStackRouteParams>()
+const Stack = createStackNavigator<StackRouteParams>()
 
 const screenOptions = (theme: Theme, isDarkTheme: boolean): StackNavigationOptions => ({
   headerTintColor: theme.colors.common.white,
