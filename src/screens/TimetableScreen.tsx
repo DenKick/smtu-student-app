@@ -19,6 +19,14 @@ import { useAppDispatch } from '~store/index'
 import { fetchTimetable } from '~store/timetableSlice'
 import { SubjectTimetable } from '~types/timetable'
 
+const renderItem = ({ item }: SectionListRenderItemInfo<SubjectTimetable>) => {
+  return <TimetableItem item={item} />
+}
+
+const renderSectionHeader = ({ section: { title } }: { section: SectionListData<SubjectTimetable> }) => {
+  return <TimetableSectionHeader title={title} />
+}
+
 const TimetableScreen: React.FC = () => {
   const [scrollOffset, setScrollOffset] = useState(0)
 
@@ -34,14 +42,6 @@ const TimetableScreen: React.FC = () => {
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offset = e.nativeEvent.contentOffset.y
     setScrollOffset(offset)
-  }
-
-  const renderItem = ({ item }: SectionListRenderItemInfo<SubjectTimetable>) => {
-    return <TimetableItem item={item} />
-  }
-
-  const renderSectionHeader = ({ section: { title } }: { section: SectionListData<SubjectTimetable> }) => {
-    return <TimetableSectionHeader title={title} />
   }
 
   useEffect(() => {
