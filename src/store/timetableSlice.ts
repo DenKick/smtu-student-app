@@ -29,6 +29,12 @@ export const timetableSlice = createSlice({
     setUpdated: state => {
       state.updated = new Date()
     },
+    restoreTimetableSlice: state => {
+      state.isError = initialState.isError
+      state.updated = initialState.updated
+      state.timetable = initialState.timetable
+      state.isLoadingTimetable = initialState.isLoadingTimetable
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchTimetable.fulfilled, (state, action: PayloadAction<SubjectTimetable[]>) => {
@@ -46,5 +52,5 @@ export const timetableSlice = createSlice({
   },
 })
 
-export const { setUpdated } = timetableSlice.actions
+export const { setUpdated, restoreTimetableSlice } = timetableSlice.actions
 export default timetableSlice.reducer

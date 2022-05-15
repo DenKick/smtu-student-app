@@ -65,16 +65,16 @@ const AuthScreen: React.FC = () => {
   }
 
   useEffect(() => {
-    Keyboard.addListener(keyboardShowEvent, () => {
+    const showListener = Keyboard.addListener(keyboardShowEvent, () => {
       handleAnimation(10)
     })
-    Keyboard.addListener(keyboardHideEvent, () => {
+    const hideListener = Keyboard.addListener(keyboardHideEvent, () => {
       handleAnimation(70)
     })
 
     return () => {
-      Keyboard.removeAllListeners(keyboardShowEvent)
-      Keyboard.removeAllListeners(keyboardHideEvent)
+      showListener.remove()
+      hideListener.remove()
     }
   }, [])
 

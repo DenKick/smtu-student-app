@@ -4,7 +4,10 @@ import { ConfigureStoreOptions, configureStore, Dispatch, AnyAction, ThunkDispat
 import { persistStore } from 'redux-persist'
 
 import reactotron from '~lib/reactotron'
+import { restoreHomeworkSlice } from '~store/homeworkSlice'
+import { restoreProfileSlice } from '~store/profileSlice'
 import { rootReducer, RootState } from '~store/store'
+import { restoreTimetableSlice } from '~store/timetableSlice'
 import { restoreUserSliceState } from '~store/userSlice'
 
 const defaultMiddlewares = {
@@ -23,6 +26,9 @@ export const store = configureStore(options)
 export const persistor = persistStore(store)
 
 export const clearStore = (dispatch: Dispatch) => {
+  dispatch(restoreProfileSlice())
+  dispatch(restoreHomeworkSlice())
+  dispatch(restoreTimetableSlice())
   dispatch(restoreUserSliceState())
 }
 

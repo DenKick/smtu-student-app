@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ScrollView } from 'react-native'
 import Modal from 'react-native-modal'
 
 import styled from '@emotion/native'
@@ -83,14 +82,12 @@ const AddHomeworkModal: React.FC<Props> = ({ isVisible, toggleVisible, subject, 
     >
       <ModalInnerWrapper>
         <ModalHeading>Добавить задание</ModalHeading>
-        <ScrollView style={{ maxHeight: 250 }}>
-          <InputWrapper>
-            <Input value={heading} placeholder='Заголовок' setValue={setHeading} />
-          </InputWrapper>
-          <InputWrapper>
-            <Input value={description} placeholder='Описание' setValue={setDescription} multiline />
-          </InputWrapper>
-        </ScrollView>
+        <InputWrapper>
+          <Input value={heading} placeholder='Заголовок' setValue={setHeading} />
+        </InputWrapper>
+        <InputWrapper>
+          <Input value={description} placeholder='Описание' setValue={setDescription} multiline />
+        </InputWrapper>
         <SelectDate selectedDate={date} onConfirm={handleSetDateConfirm} />
         <Button label='Добавить' onPress={handleAddButtonPress} />
       </ModalInnerWrapper>

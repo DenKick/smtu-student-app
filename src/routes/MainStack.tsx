@@ -6,6 +6,7 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 
 import AndroidMainNavigation from '~routes/AndroidMainNavigation'
 import IOSMainNavigation from '~routes/IOSMainNavigation'
+import ProfileDetailsScreen from '~screens/ProfileDetailsScreen'
 import SubjectScreen from '~screens/SubjectScreen'
 import { RoutesNames, StackRouteParams } from '~types/routes'
 
@@ -48,6 +49,7 @@ const MainStack = () => {
         component={Platform.select({ ios: IOSMainNavigation, default: AndroidMainNavigation })}
       />
       <Stack.Screen name={RoutesNames.Subject} component={SubjectScreen} />
+      <Stack.Screen name={RoutesNames.ProfileDetails} component={ProfileDetailsScreen} />
     </Stack.Navigator>
   )
 }

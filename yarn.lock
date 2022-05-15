@@ -6453,6 +6453,11 @@ react-native-date-picker@^4.2.1:
   resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-4.2.1.tgz#36d97c56c651e5b5c848c511585b0c548f90e3b9"
   integrity sha512-buJkmVkyJIQwqeV1/1YYLVmBj9ah1L9AFJVFad20aObJuyxPSqJZClmuwDjVH1kf9jqXICDHJEH3bbagtr6Hfg==
 
+react-native-fast-image@^8.5.11:
+  version "8.5.11"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz#e3dc969d0e4e8df026646bf18194465aa55cbc2b"
+  integrity sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA==
+
 react-native-flipper@^0.34.0:
   version "0.34.0"
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.34.0.tgz#7df1f38ba5d97a9321125fe0fccbe47d99e6fa1d"
