@@ -4,12 +4,13 @@ import { KeyboardType, NativeSyntheticEvent, TextInputChangeEventData } from 're
 import styled from '@emotion/native'
 import { useTheme } from '@emotion/react'
 
-const InputField = styled.TextInput`
+const InputField = styled.TextInput<{ isMultiline?: boolean }>`
   background-color: ${({ theme }) => theme.colors.input.background};
   border-radius: ${({ theme }) => theme.dimensions.borderRadius};
   color: ${({ theme }) => theme.colors.input.text};
   padding: 11px 17px;
   width: 100%;
+  height: ${({ isMultiline }) => (isMultiline ? '150px' : 'auto')};
 `
 
 interface Props {
@@ -40,6 +41,7 @@ const Input: React.FC<Props> = ({ value, setValue, placeholder, isPassword, keyb
       secureTextEntry={isPassword}
       editable={!isLoading}
       multiline={multiline}
+      isMultiline={multiline}
     />
   )
 }
