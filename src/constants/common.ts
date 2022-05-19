@@ -12,3 +12,5 @@ export const MONTHS = [
   'ноября',
   'декабря',
 ]
+
+export const NotificationType = 'Уведомление'
