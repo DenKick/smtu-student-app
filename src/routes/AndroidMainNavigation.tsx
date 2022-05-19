@@ -2,7 +2,7 @@ import React from 'react'
 import { StatusBar, useColorScheme } from 'react-native'
 
 import { Theme, useTheme } from '@emotion/react'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createDrawerNavigator, DrawerNavigationOptions } from '@react-navigation/drawer'
 
 import { routesConfig } from '~config/routesConfig'
 import AccountIcon from '~icons/AccountIcon'
@@ -13,31 +13,30 @@ import { RoutesNames } from '~types/routes'
 
 const Drawer = createDrawerNavigator()
 
-const screenOptions = (theme: Theme, isDarkTheme: boolean) => ({
-  headerTintColor: theme.colors.common.white,
+const screenOptions = (theme: Theme): DrawerNavigationOptions => ({
+  headerTintColor: theme.colors.input.text,
   drawerItemStyle: {
-    borderRadius: 10,
+    borderRadius: 20,
     marginVertical: 10,
+    paddingHorizontal: 15,
   },
   drawerContentStyle: {
-    backgroundColor: isDarkTheme ? theme.colors.background.secondary : theme.colors.background.primary,
+    backgroundColor: theme.colors.background.secondary,
   },
   drawerActiveTintColor: theme.colors.icons.active,
   drawerInactiveTintColor: theme.colors.icons.inactive,
-  drawerActiveBackgroundColor: isDarkTheme ? theme.colors.background.primary : theme.colors.background.secondary,
+  drawerActiveBackgroundColor: theme.colors.common.primary,
   sceneContainerStyle: {
     backgroundColor: theme.colors.background.primary,
   },
   headerStyle: {
-    backgroundColor: isDarkTheme ? theme.colors.background.secondary : theme.colors.button.backgroundPrimary,
-    borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border.primary,
+    backgroundColor: theme.colors.background.primary,
     elevation: 0,
     height: 60,
     shadowOpacity: 0,
   },
   headerTitleStyle: {
-    color: theme.colors.common.white,
+    color: theme.colors.input.text,
   },
 })
 
@@ -76,8 +75,11 @@ const AndroidMainNavigation = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={isDarkTheme ? theme.colors.background.secondary : theme.colors.common.primary} />
-      <Drawer.Navigator screenOptions={screenOptions(theme, isDarkTheme)}>
+      <StatusBar
+        backgroundColor={theme.colors.background.primary}
+        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+      />
+      <Drawer.Navigator useLegacyImplementation={false} screenOptions={screenOptions(theme)}>
         {routesConfig.map(route => (
           <Drawer.Screen
             key={route.name}
