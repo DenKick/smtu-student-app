@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { News, Notification } from '~types/newsAndNotifications'
 import { Profile } from '~types/profile'
 import { SubjectTimetable } from '~types/timetable'
 
@@ -36,9 +37,17 @@ class Api {
   }
 
   public async getNews() {
-    const { data } = await apiInstance.get('/v3/0f309ea6-8871-4924-89fe-9dcbfdd6e50a', {
+    const { data } = await apiInstance.get<News[]>('/v3/0f309ea6-8871-4924-89fe-9dcbfdd6e50a', {
       params: {
         'mocky-delay': '1500ms',
+      },
+    })
+    return data
+  }
+  public async getNotifications() {
+    const { data } = await apiInstance.get<Notification[]>('/v3/667ce271-0dfb-48a1-95f5-c33727fa4a64', {
+      params: {
+        'mocky-delay': '500ms',
       },
     })
     return data
