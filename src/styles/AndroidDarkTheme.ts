@@ -5,38 +5,38 @@ import { fontSizes } from '~styles/fontSizes'
 export const AndroidDarkTheme: Theme = {
   colors: {
     common: {
-      primary: '#1565C0',
-      warning: '#F44336',
+      primary: '#b0c5ff',
+      warning: '#F2B8B5',
       black: '#000000',
       white: '#FFFFFF',
     },
     background: {
-      primary: '#191919',
-      secondary: '#252525',
+      primary: '#1b1b1f',
+      secondary: '#262529',
     },
     input: {
-      text: '#FFFFFF',
+      text: '#e3e1e6',
       background: '#1D1D1D',
-      placeholder: '#EBEBF54B',
+      placeholder: '#938F99',
     },
     button: {
-      textColor: '#FFFFFF',
-      textDisabled: '#EBEBF54C',
-      backgroundPrimary: '#1565C0',
-      backgroundDisabled: '#7474802E',
+      textColor: '#002b76',
+      textDisabled: '#00184a',
+      backgroundPrimary: '#b0c5ff',
+      backgroundDisabled: '#d9e2ff',
     },
     icons: {
       inactive: '#FFFFFF',
-      active: '#1565C0',
+      active: '#002b76',
     },
     border: {
-      primary: '#2A2A2A',
+      primary: '#938F99',
       secondary: '#616161',
     },
-    handleComponent: '#FFFFFF',
+    handleComponent: '#EBEBF54C',
   },
   dimensions: {
-    borderRadius: '10px',
+    borderRadius: '20px',
     commonHorizontalPadding: '16px',
     ...fontSizes,
   },

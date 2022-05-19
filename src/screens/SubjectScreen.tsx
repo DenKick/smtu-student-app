@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, ListRenderItemInfo, Platform } from 'react-native'
+import { FlatList, ListRenderItemInfo } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import styled from '@emotion/native'
@@ -18,25 +18,17 @@ import { Homework } from '~types/homework'
 import { RoutesNames, StackRouteParams } from '~types/routes'
 
 const Wrapper = styled.View`
-  padding: ${({ theme }) =>
-    Platform.select({
-      ios: theme.dimensions.commonHorizontalPadding,
-      default: `${theme.dimensions.commonHorizontalPadding} 0px`,
-    })};
+  padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
 `
 
 const ButtonWrapper = styled.View`
-  padding: ${({ theme }) => Platform.select({ ios: '0px', default: theme.dimensions.commonHorizontalPadding })};
+  padding: ${({ theme }) => `${theme.dimensions.commonHorizontalPadding} 0px`};
 `
 
 const Teacher = styled.Text`
   color: ${({ theme }) => theme.colors.input.text};
   font-size: ${({ theme }) => theme.dimensions.fontSize.large};
-  padding: ${({ theme }) =>
-    Platform.select({
-      ios: `${theme.dimensions.commonHorizontalPadding} 0`,
-      default: theme.dimensions.commonHorizontalPadding,
-    })};
+  padding: ${({ theme }) => `${theme.dimensions.commonHorizontalPadding} 0`};
 `
 
 const renderItem = ({ item }: ListRenderItemInfo<Homework>) => <HomeworkListItem item={item} />

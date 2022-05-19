@@ -39,6 +39,7 @@ declare module '@emotion/react' {
       commonHorizontalPadding: string
       fontSize: {
         sectionHeading: string
+        extraLarge: string
         large: string
         normal: string
         small: string

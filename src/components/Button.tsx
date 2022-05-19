@@ -30,7 +30,7 @@ interface Props {
 const Button: React.FC<Props> = ({ label, isDisabled, color, background, onPress, isLoading }) => {
   const theme = useTheme()
 
-  const buttonBackgroundColor = background || theme.colors.button.backgroundPrimary
+  const buttonBackgroundColor = background || theme.colors.common.primary
   const textColor = color || theme.colors.button.textColor
 
   return (

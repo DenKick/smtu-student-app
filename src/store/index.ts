@@ -5,6 +5,7 @@ import { persistStore } from 'redux-persist'
 
 import reactotron from '~lib/reactotron'
 import { restoreHomeworkSlice } from '~store/homeworkSlice'
+import { restoreNewsAndNotificationsSlice } from '~store/newsAndNotificationsSlice'
 import { restoreProfileSlice } from '~store/profileSlice'
 import { rootReducer, RootState } from '~store/store'
 import { restoreTimetableSlice } from '~store/timetableSlice'
@@ -30,6 +31,7 @@ export const clearStore = (dispatch: Dispatch) => {
   dispatch(restoreHomeworkSlice())
   dispatch(restoreTimetableSlice())
   dispatch(restoreUserSliceState())
+  dispatch(restoreNewsAndNotificationsSlice())
 }
 
 // TODO See what's happening, when i use default store.dispatch type

@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  ListRenderItemInfo,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  Platform,
-  SectionList,
-  SectionListData,
-} from 'react-native'
+import { ListRenderItemInfo, NativeScrollEvent, NativeSyntheticEvent, SectionList, SectionListData } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import styled from '@emotion/native'
@@ -21,11 +14,7 @@ import useAppSelector from '~hooks/useAppSelector'
 import { Homework } from '~types/homework'
 
 const ListItemWrapper = styled.View`
-  padding: ${({ theme }) =>
-    Platform.select({
-      ios: `0px ${theme.dimensions.commonHorizontalPadding}`,
-      default: '0px',
-    })};
+  padding: ${({ theme }) => `0px ${theme.dimensions.commonHorizontalPadding}`};
 `
 
 const renderItem = ({ item }: ListRenderItemInfo<Homework>) => (

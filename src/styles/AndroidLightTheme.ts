@@ -5,19 +5,19 @@ import { fontSizes } from '~styles/fontSizes'
 export const AndroidLightTheme: Theme = {
   colors: {
     common: {
-      primary: '#1976D2',
-      warning: '#F44336',
-      black: '#000000',
+      primary: '#0656cf',
+      warning: '#B3261E',
+      black: '#1b1b1f',
       white: '#FFFFFF',
     },
     background: {
-      primary: '#FFFFFF',
-      secondary: '#FAFAFA',
+      primary: '#FFFBFE',
+      secondary: '#F1EFF4',
     },
     input: {
-      text: '#000000',
+      text: '#1b1b1f',
       background: '#76768030',
-      placeholder: '#3C3C4396',
+      placeholder: '#79747E',
     },
     button: {
       textColor: '#FFFFFF',
@@ -26,17 +26,17 @@ export const AndroidLightTheme: Theme = {
       backgroundDisabled: '#74748014',
     },
     icons: {
-      inactive: '#000000',
-      active: '#1976D2',
+      inactive: '#1b1b1f',
+      active: '#ffffff',
     },
     border: {
-      primary: '#B2B1B2',
-      secondary: '#9E9E9E',
+      primary: '#79747E',
+      secondary: '#79747E',
     },
-    handleComponent: '#000000',
+    handleComponent: '#FAFAFF',
   },
   dimensions: {
-    borderRadius: '10px',
+    borderRadius: '20px',
     commonHorizontalPadding: '16px',
     ...fontSizes,
   },

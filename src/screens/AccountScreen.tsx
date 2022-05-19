@@ -3,11 +3,14 @@ import React, { useEffect } from 'react'
 import styled from '@emotion/native'
 
 import Logo from '~components/Logo'
+import MenuItem from '~components/MenuItem'
 import ProfileMenuItem from '~components/ProfileMenuItem'
 import ScreenLayout from '~components/ScreenLayout'
-import MenuItem from '~icons/MenuItem'
+import useAppSelector from '~hooks/useAppSelector'
 import { useAppDispatch } from '~store/index'
+import { fetchNotifications } from '~store/newsAndNotificationsSlice'
 import { fetchUserInfo } from '~store/profileSlice'
+import { selectUnreadNotifications } from '~store/selectors'
 import { RoutesNames } from '~types/routes'
 
 const Wrapper = styled.ScrollView`
@@ -20,10 +23,16 @@ const LogoWrapper = styled.View`
 `
 
 const AccountScreen: React.FC = () => {
+  const { profile } = useAppSelector(state => state.profile)
+  const unreadNotifications = useAppSelector(state => selectUnreadNotifications(state))
+
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchUserInfo())
+    if (!profile) {
+      dispatch(fetchUserInfo())
+      dispatch(fetchNotifications())
+    }
   }, [])
 
   return (
@@ -33,8 +42,8 @@ const AccountScreen: React.FC = () => {
           <Logo scale={0.3} />
         </LogoWrapper>
         <ProfileMenuItem />
-        <MenuItem title='Новости' route={RoutesNames.Timetable} />
-        <MenuItem title='Уведомления' route={RoutesNames.Timetable} />
+        <MenuItem title='Новости' route={RoutesNames.News} />
+        <MenuItem title='Уведомления' route={RoutesNames.Notifications} countField={unreadNotifications.length} />
         <MenuItem title='Сообщения' route={RoutesNames.Timetable} />
       </Wrapper>
     </ScreenLayout>

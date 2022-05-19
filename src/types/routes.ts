@@ -1,20 +1,28 @@
 import { FC } from 'react'
 
 export enum RoutesNames {
-  Account = 'ACCOUNT_SCREEN',
+  News = 'NEWS',
   Auth = 'AUTH_SCREEN',
-  Homework = 'HOMEWORK_SCREEN',
-  Performance = 'PERFORMANCE_SCREEN',
-  Timetable = 'TIMETABLE_SCREEN',
+  Account = 'ACCOUNT_SCREEN',
   Subject = 'SUBJECT_SCREEN',
-  PlatformNavigation = 'PLATFORM_NAVIGATION',
+  Homework = 'HOMEWORK_SCREEN',
+  NewsDetails = 'NEWS_DETAILS',
+  Timetable = 'TIMETABLE_SCREEN',
+  Notifications = 'NOTIFICATIONS',
+  Performance = 'PERFORMANCE_SCREEN',
   ProfileDetails = 'PROFILE_DETAILS',
+  PlatformNavigation = 'PLATFORM_NAVIGATION',
+  NotificationDetails = 'NOTIFICATION_DETAILS',
 }
 
 export interface StackRouteParams {
+  [RoutesNames.News]: undefined
   [RoutesNames.Timetable]: undefined
-  [RoutesNames.Subject]: { title: string; teacher: string | null }
+  [RoutesNames.Notifications]: undefined
   [RoutesNames.ProfileDetails]: undefined
+  [RoutesNames.NewsDetails]: { newsHeading: string }
+  [RoutesNames.Subject]: { title: string; teacher: string | null }
+  [RoutesNames.NotificationDetails]: { id: number; heading: string }
   [key: string]: object | undefined
 }
 

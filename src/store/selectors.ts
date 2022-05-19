@@ -7,3 +7,21 @@ export const selectHomeworksBySubject = createSelector(
   (_: RootState, subject: string) => subject,
   ({ homeworks }, subject) => homeworks.filter(hw => hw.subject === subject),
 )
+
+export const selectNewsByHeading = createSelector(
+  (state: RootState) => state.newsAndNotifications.news,
+  (_: RootState, heading: string) => heading,
+  ({ content }, heading) => content.find(n => n.heading === heading),
+)
+
+export const selectNotificationById = createSelector(
+  (state: RootState) => state.newsAndNotifications.notifications,
+  (_: RootState, id: number) => id,
+  ({ content }, id) => content.find(n => n.id === id),
+)
+
+export const selectUnreadNotifications = createSelector(
+  (state: RootState) => state.newsAndNotifications.notifications,
+  (state: RootState) => state.newsAndNotifications.readNotifications,
+  ({ content }, unreadNotifications) => content.filter(n => !unreadNotifications.includes(n.id)),
+)

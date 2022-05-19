@@ -1,11 +1,13 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import Modal from 'react-native-modal'
 
 import styled from '@emotion/native'
 import { useTheme } from '@emotion/react'
 import Clipboard from '@react-native-clipboard/clipboard'
 
+import GrayText from '~components/GrayText'
+import HeadingText from '~components/HeadingText'
 import { removeHomework } from '~store/homeworkSlice'
 import { useAppDispatch } from '~store/index'
 import { Homework } from '~types/homework'
@@ -13,12 +15,7 @@ import { Homework } from '~types/homework'
 const ModalContainer = styled.View`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: ${({ theme }) => theme.dimensions.borderRadius};
-  padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
-`
-
-const Heading = styled.Text`
-  color: ${({ theme }) => theme.colors.input.text};
-  font-size: ${({ theme }) => theme.dimensions.fontSize.sectionHeading};
+  padding: ${({ theme }) => Platform.select({ ios: theme.dimensions.commonHorizontalPadding, default: '20px' })};
 `
 
 const DescriptionText = styled.Text`
@@ -26,12 +23,6 @@ const DescriptionText = styled.Text`
   font-size: ${({ theme }) => theme.dimensions.fontSize.large};
   line-height: 22px;
   margin: ${({ theme }) => theme.dimensions.commonHorizontalPadding} 0;
-`
-
-const GrayText = styled.Text`
-  font-size: ${({ theme }) => theme.dimensions.fontSize.large};
-  color: ${({ theme }) => theme.colors.input.placeholder};
-  margin: 8px 0;
 `
 
 const ButtonsWrapper = styled.View`
@@ -77,12 +68,12 @@ const HomeworkModal: React.FC<Props> = ({ isVisible, onBackdropPress, item }) =>
   return (
     <Modal isVisible={isVisible} onBackdropPress={onBackdropPress}>
       <ModalContainer>
-        <Heading>{item.heading}</Heading>
-        {!!item.date && <GrayText>Дата сдачи: {date?.toLocaleDateString()}</GrayText>}
+        <HeadingText>{item.heading}</HeadingText>
+        {!!item.date && <GrayText margin={'8px 0'}>Дата сдачи: {date?.toLocaleDateString()}</GrayText>}
         <ScrollView style={{ maxHeight: 200 }}>
           <DescriptionText>{item.description}</DescriptionText>
         </ScrollView>
-        {!!item.teacher && <GrayText>Преподаватель: {item.teacher}</GrayText>}
+        {!!item.teacher && <GrayText margin={'8px 0'}>Преподаватель: {item.teacher}</GrayText>}
         <ButtonsWrapper>
           <Button onPress={handleDeleteHomework}>
             <ButtonText color={theme.colors.common.warning}>Удалить</ButtonText>

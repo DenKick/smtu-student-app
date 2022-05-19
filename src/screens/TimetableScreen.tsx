@@ -51,7 +51,7 @@ const TimetableScreen: React.FC = () => {
   }, [])
 
   return (
-    <ScreenLayout heading={'Расписание'} offset={scrollOffset}>
+    <ScreenLayout heading='Расписание' offset={scrollOffset}>
       <SectionList
         refreshControl={<RefreshControl refreshing={isLoadingTimetable} onRefresh={handleUpdateTimetable} />}
         contentContainerStyle={{ paddingBottom: bottomOffset(bottom) }}

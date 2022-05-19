@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -22,7 +23,7 @@ const Image = styled(FastImage)`
 `
 
 const RowItem = styled.View`
-  border-bottom-width: 1px;
+  border-bottom-width: ${Platform.select({ ios: '1px', default: '0px' })};
   border-bottom-color: ${({ theme }) => theme.colors.border.primary};
   flex-direction: row;
   padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding} 0px;

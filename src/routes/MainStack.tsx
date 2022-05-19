@@ -1,32 +1,34 @@
 import React from 'react'
-import { Platform, useColorScheme } from 'react-native'
+import { Platform } from 'react-native'
 
 import { Theme, useTheme } from '@emotion/react'
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 
 import AndroidMainNavigation from '~routes/AndroidMainNavigation'
 import IOSMainNavigation from '~routes/IOSMainNavigation'
+import NewsDetailsScreen from '~screens/NewsDetailsScreen'
+import NewsScreen from '~screens/NewsScreen'
+import NotificationDetailsScreen from '~screens/NotificationDetailsScreen'
+import NotificationsScreen from '~screens/NotificationsScreen'
 import ProfileDetailsScreen from '~screens/ProfileDetailsScreen'
 import SubjectScreen from '~screens/SubjectScreen'
 import { RoutesNames, StackRouteParams } from '~types/routes'
 
 const Stack = createStackNavigator<StackRouteParams>()
 
-const screenOptions = (theme: Theme, isDarkTheme: boolean): StackNavigationOptions => ({
-  headerTintColor: theme.colors.common.white,
+const screenOptions = (theme: Theme): StackNavigationOptions => ({
+  headerTintColor: theme.colors.input.text,
   headerShown: Platform.select({ ios: false, default: true }),
   headerBackgroundContainerStyle: {
-    backgroundColor: theme.colors.background.secondary,
+    backgroundColor: theme.colors.background.primary,
   },
   headerStyle: {
-    backgroundColor: isDarkTheme ? theme.colors.background.secondary : theme.colors.button.backgroundPrimary,
-    borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border.primary,
+    backgroundColor: theme.colors.background.primary,
     elevation: 0,
     height: 60,
     shadowOpacity: 0,
   },
-  presentation: Platform.select({ ios: 'modal', default: 'card' }),
+  presentation: 'modal',
   cardStyle: { flex: 1, backgroundColor: theme.colors.background.primary, borderRadius: 0 },
 })
 
@@ -36,20 +38,36 @@ const mainScreenOptions: StackNavigationOptions = {
 
 const MainStack = () => {
   const theme = useTheme()
-  const isDarkTheme = useColorScheme() === 'dark'
 
   return (
-    <Stack.Navigator
-      initialRouteName={RoutesNames.PlatformNavigation}
-      screenOptions={screenOptions(theme, isDarkTheme)}
-    >
+    <Stack.Navigator initialRouteName={RoutesNames.PlatformNavigation} screenOptions={screenOptions(theme)}>
       <Stack.Screen
         name={RoutesNames.PlatformNavigation}
         options={mainScreenOptions}
         component={Platform.select({ ios: IOSMainNavigation, default: AndroidMainNavigation })}
       />
       <Stack.Screen name={RoutesNames.Subject} component={SubjectScreen} />
-      <Stack.Screen name={RoutesNames.ProfileDetails} component={ProfileDetailsScreen} />
+      <Stack.Screen name={RoutesNames.ProfileDetails} options={{ title: 'Профиль' }} component={ProfileDetailsScreen} />
+      <Stack.Screen
+        name={RoutesNames.News}
+        options={{ presentation: 'card', title: 'Новости' }}
+        component={NewsScreen}
+      />
+      <Stack.Screen
+        name={RoutesNames.NewsDetails}
+        options={({ route }) => ({ title: route.params.newsHeading })}
+        component={NewsDetailsScreen}
+      />
+      <Stack.Screen
+        name={RoutesNames.Notifications}
+        options={{ presentation: 'card', title: 'Уведомления' }}
+        component={NotificationsScreen}
+      />
+      <Stack.Screen
+        name={RoutesNames.NotificationDetails}
+        options={({ route }) => ({ title: route.params.heading })}
+        component={NotificationDetailsScreen}
+      />
     </Stack.Navigator>
   )
 }

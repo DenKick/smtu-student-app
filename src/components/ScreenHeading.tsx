@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { Animated, Dimensions } from 'react-native'
+import { Animated, Dimensions, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import styled from '@emotion/native'
 
 import { animationTiming } from '~constants/platformSpecific'
+import useAppNavigation from '~hooks/useAppNavigation'
 
 const Wrapper = styled(Animated.View)`
   background-color: ${({ theme }) => theme.colors.background.secondary};
@@ -31,10 +32,21 @@ const Title = styled.Text`
   line-height: 22px;
 `
 
+const HeadingContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+const BackButton = styled.Text`
+  font-size: ${({ theme }) => theme.dimensions.fontSize.sectionHeading};
+  color: ${({ theme }) => theme.colors.common.primary};
+`
+
 export interface Props {
   title: string
   offset: number
   withHandleComponent?: boolean
+  withBackButton?: boolean
 }
 
 enum HeaderState {
@@ -44,8 +56,9 @@ enum HeaderState {
 
 const { height } = Dimensions.get('window')
 
-const ScreenHeading: React.FC<Props> = ({ title, offset, withHandleComponent }) => {
+const ScreenHeading: React.FC<Props> = ({ title, offset, withHandleComponent, withBackButton }) => {
   const { top } = useSafeAreaInsets()
+  const navigation = useAppNavigation()
   const [headerState, setHeaderState] = useState(HeaderState.Expanded)
 
   const paddingTop = useMemo(() => {
@@ -62,6 +75,10 @@ const ScreenHeading: React.FC<Props> = ({ title, offset, withHandleComponent }) 
     }).start()
   }
 
+  const handleBackPress = () => {
+    navigation.goBack()
+  }
+
   useEffect(() => {
     if (headerState === HeaderState.Expanded && offset > 30) {
       handleAnimation(top)
@@ -75,7 +92,14 @@ const ScreenHeading: React.FC<Props> = ({ title, offset, withHandleComponent }) 
   return (
     <Wrapper style={{ paddingTop: paddingAnim }}>
       {withHandleComponent && <HandleComponent />}
-      <Title>{title}</Title>
+      <HeadingContainer>
+        <Title>{title}</Title>
+        {withBackButton && (
+          <TouchableOpacity onPress={handleBackPress}>
+            <BackButton>Назад</BackButton>
+          </TouchableOpacity>
+        )}
+      </HeadingContainer>
     </Wrapper>
   )
 }
