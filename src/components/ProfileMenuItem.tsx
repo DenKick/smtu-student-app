@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Platform } from 'react-native'
 import FastImage from 'react-native-fast-image'
 
 import styled from '@emotion/native'
@@ -11,7 +11,7 @@ import { RoutesNames } from '~types/routes'
 
 const ProfileWrapper = styled.TouchableOpacity`
   width: 100%;
-  border-bottom-width: 1px;
+  border-bottom-width: ${Platform.select({ ios: '1px', default: '0px' })};
   border-bottom-color: ${({ theme }) => theme.colors.border.primary};
   padding: 16px 0;
   flex-direction: row;

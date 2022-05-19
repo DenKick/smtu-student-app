@@ -12,6 +12,8 @@ import { SubjectTimetable } from '~types/timetable'
 const RowContainer = styled.View`
   background-color: ${({ theme }) =>
     Platform.select({ ios: theme.colors.background.primary, default: theme.colors.background.secondary })};
+  border-radius: ${({ theme }) => theme.dimensions.borderRadius};
+  margin: ${({ theme }) => Platform.select({ ios: '0px', default: theme.dimensions.commonHorizontalPadding })};
   padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
   flex-direction: row;
   justify-content: space-between;

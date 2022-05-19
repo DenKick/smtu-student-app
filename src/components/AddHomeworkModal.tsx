@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Platform } from 'react-native'
 import Modal from 'react-native-modal'
 
 import styled from '@emotion/native'
@@ -12,11 +13,15 @@ import { addHomework } from '~store/homeworkSlice'
 import { useAppDispatch } from '~store/index'
 
 const InputWrapper = styled.View`
-  padding: 0 0 16px 0;
+  padding: 8px 0 16px;
 `
 
 const ModalInnerWrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.background.primary};
+  background-color: ${({ theme }) =>
+    Platform.select({
+      ios: theme.colors.background.primary,
+      default: theme.colors.background.secondary,
+    })};
   border-radius: ${({ theme }) => theme.dimensions.borderRadius};
   padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
   width: 100%;

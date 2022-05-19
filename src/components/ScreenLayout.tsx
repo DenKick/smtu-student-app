@@ -11,13 +11,21 @@ interface Props {
   heading: string
   offset: number
   withHandleComponent?: boolean
+  withBackButton?: boolean
 }
 
-const ScreenLayout: React.FC<Props> = ({ children, heading, offset, withHandleComponent }) => {
+const ScreenLayout: React.FC<Props> = ({ children, heading, offset, withHandleComponent, withBackButton }) => {
   return (
     <Wrapper>
       {Platform.select({
-        ios: <Heading title={heading} offset={offset} withHandleComponent={withHandleComponent} />,
+        ios: (
+          <Heading
+            title={heading}
+            offset={offset}
+            withHandleComponent={withHandleComponent}
+            withBackButton={withBackButton}
+          />
+        ),
         default: null,
       })}
       {children}
