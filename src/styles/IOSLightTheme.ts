@@ -7,6 +7,10 @@ export const IOSLightTheme: Theme = {
     common: {
       primary: '#007AFF',
       warning: '#FF3A30',
+      warningBackground: '#FF3A30',
+      onWarningBackground: '#FFFFFF',
+      accent: '#4CD964',
+      onAccent: '#FFFFFF',
       black: '#000000',
       white: '#FFFFFF',
     },

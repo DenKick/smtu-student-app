@@ -6,6 +6,10 @@ declare module '@emotion/react' {
       common: {
         primary: string
         warning: string
+        warningBackground: string
+        onWarningBackground: string
+        accent: string
+        onAccent: string
         black: string
         white: string
       }

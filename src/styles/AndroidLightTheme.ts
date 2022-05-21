@@ -7,6 +7,10 @@ export const AndroidLightTheme: Theme = {
     common: {
       primary: '#0656cf',
       warning: '#B3261E',
+      warningBackground: '#FFDAD4',
+      onWarningBackground: '#410001',
+      accent: '#b9f296',
+      onAccent: '#062100',
       black: '#1b1b1f',
       white: '#FFFFFF',
     },

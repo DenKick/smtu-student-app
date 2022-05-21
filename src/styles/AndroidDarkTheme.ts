@@ -7,6 +7,10 @@ export const AndroidDarkTheme: Theme = {
     common: {
       primary: '#b0c5ff',
       warning: '#F2B8B5',
+      warningBackground: '#930006',
+      onWarningBackground: '#ffdad4',
+      accent: '#225105',
+      onAccent: '#b9f296',
       black: '#000000',
       white: '#FFFFFF',
     },
