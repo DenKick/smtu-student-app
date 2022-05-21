@@ -36,7 +36,7 @@ const Tab = styled.TouchableOpacity<{ width: number; isActive: boolean; isDarkTh
 const TabLabel = styled.Text<{ isActive?: boolean }>`
   color: ${({ theme, isActive }) =>
     Platform.select({
-      ios: theme.colors.input.text,
+      ios: isActive ? theme.colors.common.white : theme.colors.input.text,
       default: isActive ? theme.colors.button.textColor : theme.colors.input.text,
     })};
   text-align: center;

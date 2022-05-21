@@ -10,7 +10,7 @@ import useAppSelector from '~hooks/useAppSelector'
 import { clearStore, useAppDispatch } from '~store/index'
 
 const Wrapper = styled.View`
-  height: 85%;
+  height: ${Platform.select({ ios: '85%', default: '100%' })};
   width: 100%;
   padding: ${({ theme }) => theme.dimensions.commonHorizontalPadding};
 `
