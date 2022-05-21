@@ -42,7 +42,7 @@ export const fetchNotifications = createAsyncThunk('notifications/fetchNotificat
 })
 
 export const newsAndNotificationsSlice = createSlice({
-  name: 'homework',
+  name: 'newsAndNotifications',
   initialState,
   reducers: {
     addReadNotification: (state, action: PayloadAction<number>) => {

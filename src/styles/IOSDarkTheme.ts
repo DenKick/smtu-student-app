@@ -7,6 +7,10 @@ export const IOSDarkTheme: Theme = {
     common: {
       primary: '#0A84FF',
       warning: '#FF443A',
+      accent: '#4CD964',
+      warningBackground: '#FF443A',
+      onWarningBackground: '#FFFFFF',
+      onAccent: '#0F0F0F',
       black: '#000000',
       white: '#FFFFFF',
     },

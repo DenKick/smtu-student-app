@@ -24,6 +24,9 @@ const LogoWrapper = styled.View`
 
 const AccountScreen: React.FC = () => {
   const { profile } = useAppSelector(state => state.profile)
+  const {
+    notifications: { content },
+  } = useAppSelector(state => state.newsAndNotifications)
   const unreadNotifications = useAppSelector(state => selectUnreadNotifications(state))
 
   const dispatch = useAppDispatch()
@@ -31,12 +34,15 @@ const AccountScreen: React.FC = () => {
   useEffect(() => {
     if (!profile) {
       dispatch(fetchUserInfo())
+    }
+
+    if (!content.length) {
       dispatch(fetchNotifications())
     }
   }, [])
 
   return (
-    <ScreenLayout heading={'Профиль'} offset={0}>
+    <ScreenLayout heading='Профиль' offset={0}>
       <Wrapper contentContainerStyle={{ alignItems: 'center' }}>
         <LogoWrapper>
           <Logo scale={0.3} />

@@ -3,6 +3,7 @@ import { persistCombineReducers, persistReducer } from 'redux-persist'
 
 import homeworkSlice from '~store/homeworkSlice'
 import newsAndNotificationsSlice from '~store/newsAndNotificationsSlice'
+import performanceSlice from '~store/performanceSlice'
 import profileSlice from '~store/profileSlice'
 import timetableSlice from '~store/timetableSlice'
 import userSlice from '~store/userSlice'
@@ -45,8 +46,15 @@ const profileSliceConfig = {
 const newsAndNotificationsSliceConfig = {
   key: 'newsAndNotifications',
   storage: AsyncStorage,
-  whitelist: [],
+  whitelist: ['readNotifications'],
   blacklist: ['news', 'notifications'],
+}
+
+const performanceSliceConfig = {
+  key: 'performance',
+  storage: AsyncStorage,
+  whitelist: ['performance'],
+  blacklist: ['isLoading', 'isError'],
 }
 
 export const rootReducer = persistCombineReducers(persistConfig, {
@@ -55,6 +63,7 @@ export const rootReducer = persistCombineReducers(persistConfig, {
   homework: persistReducer(homeworkSliceConfig, homeworkSlice),
   profile: persistReducer(profileSliceConfig, profileSlice),
   newsAndNotifications: persistReducer(newsAndNotificationsSliceConfig, newsAndNotificationsSlice),
+  performance: persistReducer(performanceSliceConfig, performanceSlice),
 })
 
 export type RootState = ReturnType<typeof rootReducer>
