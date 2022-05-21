@@ -25,3 +25,12 @@ export const selectUnreadNotifications = createSelector(
   (state: RootState) => state.newsAndNotifications.readNotifications,
   ({ content }, unreadNotifications) => content.filter(n => !unreadNotifications.includes(n.id)),
 )
+
+export const selectSemester = createSelector(
+  (state: RootState) => state.performance.performance,
+  (_: RootState) => _,
+  performance => {
+    const uniqSemesters = new Set(performance.map(s => s.semester.toString()))
+    return Array.from(uniqSemesters)
+  },
+)
