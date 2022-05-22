@@ -4,7 +4,7 @@ import styled from '@emotion/native'
 import { StackScreenProps } from '@react-navigation/stack'
 
 import ScreenLayout from '~components/ScreenLayout'
-import { bottomOffset } from '~constants/platformSpecific'
+import { bottomOffset, IOSTabBarHeight } from '~constants/platformSpecific'
 import useAppSelector from '~hooks/useAppSelector'
 import { selectNewsByHeading } from '~store/selectors'
 import { RoutesNames, StackRouteParams } from '~types/routes'
@@ -36,7 +36,7 @@ const NewsDetailsScreen: React.FC<StackScreenProps<StackRouteParams, RoutesNames
   }
 
   return (
-    <ScreenLayout heading={news.heading} offset={0} withHandleComponent>
+    <ScreenLayout heading={news.heading} offset={IOSTabBarHeight} withHandleComponent>
       <Wrapper contentContainerStyle={{ paddingBottom: bottomOffset(120) }} showsVerticalScrollIndicator={false}>
         <GrayText>{news.date}</GrayText>
         <NewsText multiline editable={false} scrollEnabled={false}>
