@@ -50,7 +50,7 @@ const AccountScreen: React.FC = () => {
         <ProfileMenuItem />
         <MenuItem title='Новости' route={RoutesNames.News} />
         <MenuItem title='Уведомления' route={RoutesNames.Notifications} countField={unreadNotifications.length} />
-        <MenuItem title='Сообщения' route={RoutesNames.Timetable} />
+        <MenuItem title='Сообщения' route={RoutesNames.Messages} />
       </Wrapper>
     </ScreenLayout>
   )
