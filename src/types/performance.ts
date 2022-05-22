@@ -19,3 +19,10 @@ export enum GradeTypes {
   Negative = 'negative',
   Null = 'null',
 }
+
+export enum ExamTypes {
+  Exam = 'Экзамен',
+  Credit = 'Зачет',
+  DiffCredit = 'Дифференцированный зачет',
+  Null = 'null',
+}
