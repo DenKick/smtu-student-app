@@ -34,3 +34,16 @@ export const selectSemester = createSelector(
     return Array.from(uniqSemesters)
   },
 )
+
+export const selectMessagesNames = createSelector(
+  (state: RootState) => state.messages.messages,
+  (state: RootState) => state.profile.profile,
+  (messages, profile) => {
+    const names = messages.map(item => [item.from, item.to])
+    if (names.length) {
+      const uniqNames: Set<string> = new Set(names.reduce((a, b) => a.concat(b)))
+      return Array.from(uniqNames).filter(item => item !== profile?.name)
+    }
+    return []
+  },
+)

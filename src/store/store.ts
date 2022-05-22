@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { persistCombineReducers, persistReducer } from 'redux-persist'
 
 import homeworkSlice from '~store/homeworkSlice'
+import messagesSlice from '~store/messagesSlice'
 import newsAndNotificationsSlice from '~store/newsAndNotificationsSlice'
 import performanceSlice from '~store/performanceSlice'
 import profileSlice from '~store/profileSlice'
@@ -57,6 +58,13 @@ const performanceSliceConfig = {
   blacklist: ['isLoading', 'isError'],
 }
 
+const messagesSLiceConfig = {
+  key: 'messages',
+  storage: AsyncStorage,
+  whitelist: ['messages'],
+  blacklist: ['isLoading', 'isError'],
+}
+
 export const rootReducer = persistCombineReducers(persistConfig, {
   user: persistReducer(userSliceConfig, userSlice),
   timetable: persistReducer(timetableSliceConfig, timetableSlice),
@@ -64,6 +72,7 @@ export const rootReducer = persistCombineReducers(persistConfig, {
   profile: persistReducer(profileSliceConfig, profileSlice),
   newsAndNotifications: persistReducer(newsAndNotificationsSliceConfig, newsAndNotificationsSlice),
   performance: persistReducer(performanceSliceConfig, performanceSlice),
+  messages: persistReducer(messagesSLiceConfig, messagesSlice),
 })
 
 export type RootState = ReturnType<typeof rootReducer>
