@@ -5,7 +5,9 @@ import styled from '@emotion/native'
 
 import Heading from '~components/ScreenHeading'
 
-const Wrapper = styled.View``
+const Wrapper = styled.View`
+  flex: 1;
+`
 
 interface Props {
   heading: string
