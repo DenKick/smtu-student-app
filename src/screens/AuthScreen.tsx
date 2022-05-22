@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Animated, Keyboard } from 'react-native'
+import { Animated, Keyboard, StatusBar, useColorScheme } from 'react-native'
 
 import styled from '@emotion/native'
+import { useTheme } from '@emotion/react'
 
 import Button from '~components/Button'
 import Input from '~components/Input'
@@ -46,7 +47,9 @@ const AuthScreen: React.FC = () => {
   const [password, setPassword] = useState('')
   const [isLoginDisabled, setIsLoginDisabled] = useState(true)
 
+  const theme = useTheme()
   const dispatch = useAppDispatch()
+  const isDarkTheme = useColorScheme() === 'dark'
   const { isLoadingUser } = useAppSelector(state => state.user)
 
   const marginAnim = useRef(new Animated.Value(70)).current
@@ -88,6 +91,10 @@ const AuthScreen: React.FC = () => {
 
   return (
     <Wrapper behavior={keyboardAvoidingViewBehavior}>
+      <StatusBar
+        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background.secondary}
+      />
       <SafeView>
         <Animated.View style={{ marginTop: marginAnim }}>
           <Logo scale={0.6} />

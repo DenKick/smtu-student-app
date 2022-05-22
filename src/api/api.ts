@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { Message } from '~types/messages'
 import { News, Notification } from '~types/newsAndNotifications'
 import { Performance } from '~types/performance'
 import { Profile } from '~types/profile'
@@ -45,6 +46,7 @@ class Api {
     })
     return data
   }
+
   public async getNotifications() {
     const { data } = await apiInstance.get<Notification[]>('/v3/667ce271-0dfb-48a1-95f5-c33727fa4a64', {
       params: {
@@ -53,10 +55,20 @@ class Api {
     })
     return data
   }
+
   public async getPerformance() {
     const { data } = await apiInstance.get<Performance[]>('/v3/ee8e9927-a3f5-42d4-87df-502f46f1da36', {
       params: {
         'mocky-delay': '1000ms',
+      },
+    })
+    return data
+  }
+
+  public async getMessages() {
+    const { data } = await apiInstance.get<Message[]>('/v3/ed6eeb82-69bc-40af-a500-ac54af666b75', {
+      params: {
+        'mocky-delay': '1500ms',
       },
     })
     return data

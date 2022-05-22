@@ -3,10 +3,11 @@ import { Platform } from 'react-native'
 
 import styled from '@emotion/native'
 
+import GrayText from '~components/GrayText'
 import HeadingText from '~components/HeadingText'
 import PerformanceModal from '~components/PerformanceModal'
 import getFormattedGrade from '~helpers/getFormattedGrade'
-import { GradeTypes, Performance } from '~types/performance'
+import { ExamTypes, GradeTypes, Performance } from '~types/performance'
 
 const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) =>
@@ -21,6 +22,8 @@ const Container = styled.TouchableOpacity`
       default: theme.dimensions.commonHorizontalPadding,
     })};
   margin: ${({ theme }) => `${theme.dimensions.commonHorizontalPadding} 0px`};
+  flex-direction: row;
+  align-items: center;
 `
 
 const Grade = styled.Text<{ type: GradeTypes }>`
@@ -33,8 +36,11 @@ const GradeContainer = styled.View<{ type: GradeTypes }>`
   background-color: ${({ theme, type }) =>
     type === GradeTypes.Positive ? theme.colors.common.accent : theme.colors.common.warningBackground};
   border-radius: ${({ theme }) => theme.dimensions.borderRadius};
-  margin-top: 8px;
   padding: 4px 8px;
+`
+
+const InnerContainer = styled.View<{ width: string }>`
+  width: ${({ width }) => width};
 `
 
 interface Props {
@@ -52,11 +58,16 @@ const PerformanceListItem: React.FC<Props> = ({ item }) => {
   return (
     <>
       <Container onPress={toggleModal}>
-        <HeadingText>{item.subject}</HeadingText>
+        <InnerContainer width='75%'>
+          <HeadingText>{item.subject}</HeadingText>
+          {grade.exam !== ExamTypes.Null && <GrayText margin='8px 0 0'>{grade.exam}</GrayText>}
+        </InnerContainer>
         {grade.type !== GradeTypes.Null && (
-          <GradeContainer type={grade.type}>
-            <Grade type={grade.type}>{grade.grade}</Grade>
-          </GradeContainer>
+          <InnerContainer width='22%'>
+            <GradeContainer type={grade.type}>
+              <Grade type={grade.type}>{grade.grade}</Grade>
+            </GradeContainer>
+          </InnerContainer>
         )}
       </Container>
       <PerformanceModal isVisible={isModalVisible} toggleVisible={toggleModal} item={item} />

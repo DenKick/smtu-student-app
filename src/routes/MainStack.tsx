@@ -6,6 +6,8 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 
 import AndroidMainNavigation from '~routes/AndroidMainNavigation'
 import IOSMainNavigation from '~routes/IOSMainNavigation'
+import MessagesDetailsScreen from '~screens/MessagesDetailsScreen'
+import MessagesScreen from '~screens/MessagesScreen'
 import NewsDetailsScreen from '~screens/NewsDetailsScreen'
 import NewsScreen from '~screens/NewsScreen'
 import NotificationDetailsScreen from '~screens/NotificationDetailsScreen'
@@ -67,6 +69,16 @@ const MainStack = () => {
         name={RoutesNames.NotificationDetails}
         options={({ route }) => ({ title: route.params.heading })}
         component={NotificationDetailsScreen}
+      />
+      <Stack.Screen
+        name={RoutesNames.Messages}
+        options={{ presentation: 'card', title: 'Сообщения' }}
+        component={MessagesScreen}
+      />
+      <Stack.Screen
+        name={RoutesNames.MessagesDetails}
+        options={({ route }) => ({ title: route.params.title })}
+        component={MessagesDetailsScreen}
       />
     </Stack.Navigator>
   )
